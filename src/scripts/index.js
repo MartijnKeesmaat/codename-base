@@ -1,7 +1,7 @@
 import '../styles/index.sass';
 import './pace.min.js';
-import './panels.js';
-import './loader.js';
+import gsap from 'gsap';
+import barba from '@barba/core';
 
 function pageTransition() {
   var tl = gsap.timeline();
@@ -82,34 +82,6 @@ barba.init({
     },
   ],
 });
-
-// barba.init({
-//   sync: true,
-
-//   to: {
-//     namespace: ['about'],
-//   },
-
-//   transitions: [
-//     {
-//       async leave(data) {
-//         const done = this.async();
-
-//         pageTransition();
-//         await delay(1000);
-//         done();
-//       },
-
-//       async enter(data) {
-//         contentAnimationGrid();
-//       },
-
-//       async once(data) {
-//         contentAnimationGrid();
-//       },
-//     },
-//   ],
-// });
 
 function contentAnimationGrid() {
   gsap.to('.grid-item:first-child', {

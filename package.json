@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "@barba/core": "^2.9.7",
     "core-js": "^3.6.4",
     "gsap": "^3.2.6"
   }
