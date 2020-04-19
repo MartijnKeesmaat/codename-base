@@ -21,19 +21,11 @@ function pageTransition() {
 }
 
 function contentAnimation() {
-  var tl = gsap.timeline();
-  gsap.to('.panel-overlay', {
-    duration: 1.8,
-    x: '100%',
-    delay: 0.3,
-    stagger: 0.2,
-  });
-
-  gsap.to('.panel-content', {
-    duration: 1,
-    x: 0,
-    delay: 0.6,
-    stagger: 0.15,
+  gsap.from('main', {
+    duration: 0.2,
+    y: 30,
+    autoAlpha: 0,
+    delay: 0.5,
   });
 }
 
@@ -64,47 +56,13 @@ barba.init({
       },
 
       async enter({ current, next, trigger }) {
-        if (next.namespace === 'home') {
-          contentAnimation();
-        } else if (next.namespace === 'about') {
-          contentAnimationGrid();
-        }
+        contentAnimation();
       },
 
       async once({ current, next, trigger }) {
         console.log(next.namespace);
-        if (next.namespace === 'home') {
-          contentAnimation();
-        } else if (next.namespace === 'about') {
-          contentAnimationGrid();
-        }
+        contentAnimation();
       },
     },
   ],
 });
-
-function contentAnimationGrid() {
-  gsap.to('.grid-item:first-child', {
-    duration: 1.2,
-    autoAlpha: 1,
-    delay: 0.3,
-    y: 0,
-    ease: 'power2.out',
-  });
-
-  gsap.to('.grid-item-overlay', {
-    duration: 1.8,
-    y: '-100%',
-    delay: 0.3,
-    stagger: 0.2,
-    ease: 'power2.out',
-  });
-
-  gsap.to('.grid-item--img .test', {
-    duration: 1,
-    y: 0,
-    delay: 0.6,
-    stagger: 0.15,
-    ease: 'power2.out',
-  });
-}
